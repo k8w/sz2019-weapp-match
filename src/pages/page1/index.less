@@ -1,0 +1,14 @@
+view.test1{
+    >.left{
+        color: darken(red, 20%);
+    }
+
+    >.right{
+        color: red;
+
+        @yes: green;
+        &:hover{
+            background: @yes;
+        }
+    }
+}

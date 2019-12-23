@@ -1,0 +1,23 @@
+{
+  "name": "k8w-2019-weapp-match",
+  "version": "1.0.0",
+  "description": "微信小程序工程化框架：TypeScript + LESS + WebPack",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-less": "^4.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-typescript": "^5.0.1",
+    "gulp-uglify": "^3.0.2",
+    "miniprogram-api-typings": "^2.9.4",
+    "typescript": "^3.7.4"
+  },
+  "scripts": {
+    "dev": "gulp dev",
+    "build": "gulp build"
+  },
+  "author": "",
+  "license": "ISC",
+}
