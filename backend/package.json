@@ -1,0 +1,21 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "proto": "tsrpc proto -i protocols -o protocols/proto.ts",
+    "dev": "onchange src/**/*.ts protocols/**/*.ts shopeeType/**/*.ts index.ts -i -k -- node -r ts-node/register index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tsrpc": "^2.4.3"
+  },
+  "devDependencies": {
+    "onchange": "^6.1.0",
+    "ts-node": "^8.5.4",
+    "tsrpc-cli": "^1.0.2",
+    "typescript": "^3.7.4"
+  }
+}
