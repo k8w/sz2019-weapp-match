@@ -1,6 +1,6 @@
 import { TsrpcServer } from "tsrpc";
-import { BackConfig } from "./configs/BackConfig";
-import { serviceProto } from "./protocols/proto";
+import { BackConfig } from "./src/configs/BackConfig";
+import { serviceProto } from "./src/protocols/proto";
 import * as path from "path";
 
 let server = new TsrpcServer({

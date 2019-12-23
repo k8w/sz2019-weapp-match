@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "proto": "tsrpc proto -i protocols -o protocols/proto.ts",
-    "dev": "onchange src/**/*.ts protocols/**/*.ts shopeeType/**/*.ts index.ts -i -k -- node -r ts-node/register index.ts"
+    "proto": "tsrpc proto -i src/protocols -o src/protocols/proto.ts",
+    "dev": "onchange src/**/*.ts index.ts -i -k -- node -r ts-node/register index.ts"
   },
   "author": "",
   "license": "ISC",
