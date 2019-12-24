@@ -4,21 +4,25 @@
   "description": "微信小程序工程化框架：TypeScript + LESS + WebPack",
   "main": "index.js",
   "dependencies": {
+    "tslib": "^1.10.0",
     "tsrpc-miniapp": "^1.0.0"
   },
   "devDependencies": {
-    "del": "^5.1.0",
-    "gulp": "^4.0.2",
-    "gulp-less": "^4.0.1",
-    "gulp-rename": "^2.0.0",
-    "gulp-typescript": "^5.0.1",
-    "gulp-uglify": "^3.0.2",
+    "copy-webpack-plugin": "^5.1.1",
+    "del-cli": "^3.0.0",
+    "file-loader": "^5.0.2",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
     "miniprogram-api-typings": "^2.9.4",
-    "typescript": "^3.7.4"
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.4",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10"
   },
   "scripts": {
-    "dev": "gulp dev",
-    "build": "gulp build"
+    "dev": "npx del dist && npx webpack --mode=development -w",
+    "build": "npx del dist && npx webpack --mode=production"
   },
   "author": "k8w",
   "license": "ISC"
