@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "微信小程序工程化框架：TypeScript + LESS + WebPack",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "tsrpc-miniapp": "^1.0.0"
+  },
   "devDependencies": {
     "del": "^5.1.0",
     "gulp": "^4.0.2",
@@ -18,6 +20,6 @@
     "dev": "gulp dev",
     "build": "gulp build"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "k8w",
+  "license": "ISC"
 }

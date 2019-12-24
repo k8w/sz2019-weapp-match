@@ -1,4 +1,0 @@
-<view>
-    <text>Page 1 {{date}}</text>
-    <button bindtap="go">Goto Page2</button>
-</view>

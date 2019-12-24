@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "proto": "tsrpc proto -i src/protocols -o src/protocols/proto.ts",
-    "dev": "onchange src/**/*.ts index.ts -i -k -- node -r ts-node/register index.ts"
+    "dev": "onchange src/**/*.ts index.ts -i -k -- node -r ts-node/register index.ts",
+    "build": "rm -rf dist && npx tsc"
   },
   "author": "",
   "license": "ISC",

@@ -1,0 +1,4 @@
+<view>
+    <text class="title">Test Page</text>
+    <button type="primary" bindtap="onBtnCallAPI">CallAPI</button>
+</view>
