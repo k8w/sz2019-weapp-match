@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "proto": "tsrpc proto -i src/protocols -o src/protocols/proto.ts",
+    "proto": "tsrpc proto -i src/protocols -o src/protocols/proto.ts && rm -rf ../frontend/src/protocols && cp -rf src/protocols ../frontend/src/",
     "dev": "onchange src/**/*.ts index.ts -i -k -- node -r ts-node/register index.ts",
     "build": "del dist && npx tsc"
   },
