@@ -7,12 +7,12 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
-		"enhance": false,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
-		"nodeModules": false,
+		"nodeModules": true,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
@@ -28,7 +28,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.9.4",
 	"appid": "wx45dfe3f30c0c8d0a",
-	"projectname": "ShenzhenMatch",
+	"projectname": "TestWxAppJS",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

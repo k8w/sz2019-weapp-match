@@ -6,6 +6,11 @@
 npm install
 ```
 
+## 构建NPM
+1. 将`project.config.json`中的`miniprogramRoot`修改为`.`
+2. 进入微信开发者工具 -> 工具 -> 构建NPM
+3. 将`project.config.json`中的`miniprogramRoot`改回`dist`
+
 ## 开发
 ```
 npm run dev
