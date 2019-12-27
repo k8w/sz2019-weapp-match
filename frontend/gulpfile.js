@@ -3,13 +3,12 @@ const ts = require('gulp-typescript');
 const less = require('gulp-less');
 const rename = require('gulp-rename');
 const del = require('del');
-const uglify = require('gulp-uglify');
 const replace = require('gulp-replace');
 
 /** 构建配置 */
 // fileServer的URL前缀（不带末尾的`/`）
-// let RES_ROOT = 'https://k8w.io:8080/static';
-let RES_ROOT = 'http://localhost:8081/static';
+let RES_ROOT = 'https://k8w.io:8080/static';
+// let RES_ROOT = 'http://localhost:8081/static';
 /** 构建配置 END */
 
 const paths = {
@@ -36,9 +35,9 @@ function clean() {
 const isProd = process.argv.indexOf('build') > -1;
 function buildTs() {
     let pipe = gulp.src(paths.ts).pipe(ts.createProject('tsconfig.json')());
-    if (isProd) {
-        pipe = pipe.pipe(uglify());
-    }
+    // if (isProd) {
+    //     pipe = pipe.pipe(uglify());
+    // }
     return pipe.pipe(gulp.dest('dist'));
 }
 
