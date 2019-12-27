@@ -7,8 +7,9 @@ const uglify = require('gulp-uglify');
 const replace = require('gulp-replace');
 
 /** 构建配置 */
-// LESS中引用图片的URL前缀（不带末尾的`/`）
-let RES_ROOT = 'https://k8w.io:8080/static/app';
+// fileServer的URL前缀（不带末尾的`/`）
+// let RES_ROOT = 'https://k8w.io:8080/static';
+let RES_ROOT = 'http://localhost:8081/static';
 /** 构建配置 END */
 
 const paths = {
