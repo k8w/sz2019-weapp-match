@@ -1,10 +1,9 @@
 import { ApiCall } from "tsrpc";
 import { ReqGetCard, ResGetCard } from '../protocols/PtlGetCard';
-import { localDb } from '../../index';
 import { getOrCreateUserCards } from '../models/db/UserCards';
 
 export async function ApiGetCard(call: ApiCall<ReqGetCard, ResGetCard>) {
-    let userCards = await getOrCreateUserCards(localDb, call.req.openId);
+    let userCards = await getOrCreateUserCards(call.req.openId);
 
     let card = userCards.cards.find(v => v.id === call.req.cardId);
     if (!card) {

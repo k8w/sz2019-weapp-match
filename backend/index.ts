@@ -3,7 +3,6 @@ import { BackConfig } from "./src/configs/BackConfig";
 import { serviceProto } from "./src/protocols/proto";
 import * as path from "path";
 import { FileServer } from './src/models/FileServer';
-import { LocalDb } from './src/models/LocalDb';
 
 let server = new TsrpcServer({
     port: BackConfig.port,
@@ -11,12 +10,13 @@ let server = new TsrpcServer({
     cors: '*'
 });
 
+// 自动注册API
 server.autoImplementApi(path.resolve(__dirname, 'src/api'));
 
 // 静态文件服务
-const fileServer = new FileServer(BackConfig.staticDir, BackConfig.staticUri, BackConfig.staticCacheHeader);
+const fileServer = new FileServer(BackConfig.fileServer);
 
-// 处理TSRPC之外的其它请求
+// 处理API之外的其它GET请求
 server.dataFlow.push(async (data, conn) => {
     let httpReq = conn.options.httpReq;
     let httpRes = conn.options.httpRes;
@@ -40,6 +40,3 @@ server.dataFlow.push(async (data, conn) => {
 })
 
 server.start();
-
-// 本地DB
-export const localDb = new LocalDb(BackConfig.localDbDir);

@@ -11,24 +11,21 @@ const MIME_TYPES: { [key: string]: string | undefined } = {
 /** 简单文件服务 */
 export class FileServer {
 
-    protected _dir: string;
-    protected _urlPrefix: string;
+    protected _options: FileServerOptions;
+    // 去除URL前缀的正则
     protected _prefixReg: RegExp;
-    protected _cacheHeader?: string;
 
-    constructor(dir: string, urlPrefix: string, cacheHeader?: string) {
-        this._dir = dir;
-        this._urlPrefix = urlPrefix;
-        this._prefixReg = new RegExp('^' + urlPrefix);
-        this._cacheHeader = cacheHeader;
+    constructor(options: FileServerOptions) {
+        this._options = options;
+        this._prefixReg = new RegExp('^' + options.urlPrefix);
 
         // 确保uploadDir建立
-        fse.ensureDirSync(dir);
+        fse.ensureDirSync(options.dir);
     }
 
     /** 判断这个请求是否属于本服务应该处理的 */
     shouldServe(req: http.IncomingMessage) {
-        return req.method === 'GET' && req.url && req.url.startsWith(this._urlPrefix);
+        return req.method === 'GET' && req.url && req.url.startsWith(this._options.urlPrefix);
     }
 
     /** 提供文件服务 */
@@ -36,7 +33,7 @@ export class FileServer {
         let filepath = req.url!.replace(this._prefixReg, '');
 
         try {
-            let file = await fse.readFile(path.join(this._dir, filepath));
+            let file = await fse.readFile(path.join(this._options.dir, filepath));
 
             // Mime Type
             let extMatch = filepath.match(/\.\w+$/);
@@ -45,8 +42,8 @@ export class FileServer {
                 res.setHeader('Content-type', mimeType);
             }
 
-            if (this._cacheHeader) {
-                res.setHeader('Cache-Control', this._cacheHeader);
+            if (this._options.cacheSec) {
+                res.setHeader('Cache-Control', 'max-age=' + this._options.cacheSec);
             }
 
             res.end(file);
@@ -59,4 +56,13 @@ export class FileServer {
         }
     }
 
+}
+
+export interface FileServerOptions {
+    /** 文件根目录 */
+    dir: string,
+    /** URL前缀 */
+    urlPrefix: string,
+    /** 前台缓存时间（秒） */
+    cacheSec: number
 }

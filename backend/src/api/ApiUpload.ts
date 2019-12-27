@@ -11,7 +11,7 @@ export async function ApiUpload(call: ApiCall<ReqUpload, ResUpload>) {
     }
 
     let filepath = `${BackConfig.uploadDir}/${new Date().format('yyyyMMdd')}/${call.req.openId}_${Date.now()}${call.req.ext}`;
-    await fse.outputFile(path.join(BackConfig.staticDir, filepath), call.req.file);
+    await fse.outputFile(path.join(BackConfig.fileServer.dir, filepath), call.req.file);
 
     call.succ({
         uri: filepath

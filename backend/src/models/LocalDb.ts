@@ -16,7 +16,7 @@ export class LocalDb {
 
     async get<T>(key: string): Promise<T | null> {
         if (!this._cache[key]) {
-            this._cache[key] = await fse.readJSON(path.join(this._dir, key+'.json'), { throws: false });
+            this._cache[key] = await fse.readJSON(path.join(this._dir, key + '.json')).catch(e => null);
         }
         return this._cache[key] as T | null;
     }
@@ -26,7 +26,7 @@ export class LocalDb {
         await fse.outputJSON(path.join(this._dir, key + '.json'), value);
     }
 
-    async del(key: string): Promise<void>{
+    async del(key: string): Promise<void> {
         delete this._cache[key];
         await fse.remove(path.join(this._dir, key + '.json'));
     }
