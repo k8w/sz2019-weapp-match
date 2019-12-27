@@ -10,6 +10,8 @@ export const BackConfig = {
     /** 上传文件的存放目录（相对于static） */
     uploadDir: 'uploads',
     /** 允许前台缓存 */
-    staticCacheHeader: 'max-age=315360000'
+    staticCacheHeader: 'max-age=315360000',
+
+    localDbDir: path.resolve(__dirname, '../../db'),
 
 }

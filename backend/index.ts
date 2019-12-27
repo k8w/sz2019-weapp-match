@@ -3,6 +3,7 @@ import { BackConfig } from "./src/configs/BackConfig";
 import { serviceProto } from "./src/protocols/proto";
 import * as path from "path";
 import { FileServer } from './src/models/FileServer';
+import { LocalDb } from './src/models/LocalDb';
 
 let server = new TsrpcServer({
     port: BackConfig.port,
@@ -39,3 +40,6 @@ server.dataFlow.push(async (data, conn) => {
 })
 
 server.start();
+
+// 本地DB
+export const localDb = new LocalDb(BackConfig.localDbDir);
