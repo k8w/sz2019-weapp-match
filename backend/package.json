@@ -6,7 +6,7 @@
   "scripts": {
     "proto": "tsrpc proto -i src/protocols -o src/protocols/proto.ts && rm -rf ../frontend/src/protocols && cp -rf src/protocols ../frontend/src/",
     "dev": "onchange src/**/*.ts index.ts -i -k -- node -r ts-node/register index.ts",
-    "build": "del dist && npx tsc && mkdir dist\\static && cp -rf static/app dist/static/",
+    "build": "rm -rf dist && npx tsc && mkdir dist\\static && cp -rf static/app dist/static/",
     "test": "mocha test/**/*.test.ts"
   },
   "author": "",
