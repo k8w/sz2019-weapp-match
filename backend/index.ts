@@ -1,5 +1,5 @@
 import { TsrpcServer } from "tsrpc";
-import { BackConfig } from "./src/configs/BackConfig";
+import { BackConfig } from "./config";
 import { serviceProto } from "./src/protocols/proto";
 import * as path from "path";
 import { FileServer } from './src/models/FileServer';
@@ -29,7 +29,7 @@ server.dataFlow.push(async (data, conn) => {
         }
         // 默认展示页面
         else {
-            httpRes.end(`<h1>Mini Program API</h1>
+            httpRes.end(`<h1>Card API</h1>
             <p style="line-height: 2rem; color: darkblue;">version ${require('./package.json').version}</p>
             <p style="font-size: 0.75rem; color: gray;">Powered by TSRPC</p>`)
         }

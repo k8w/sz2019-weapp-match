@@ -2,7 +2,7 @@ import { ApiCall } from "tsrpc";
 import { ReqUpload, ResUpload } from "../protocols/PtlUpload";
 import * as fse from "fs-extra";
 import * as path from "path";
-import { BackConfig } from "../configs/BackConfig";
+import { BackConfig } from "../../config";
 
 export async function ApiUpload(call: ApiCall<ReqUpload, ResUpload>) {
     if (call.req.ext !== '.png' && call.req.ext !== '.jpg') {

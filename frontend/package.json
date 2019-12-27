@@ -4,6 +4,7 @@
   "description": "微信小程序工程化框架：TypeScript + LESS + WebPack",
   "main": "index.js",
   "dependencies": {
+    "tslib": "^1.10.0",
     "tsrpc-miniapp": "^1.0.0"
   },
   "devDependencies": {
@@ -11,6 +12,7 @@
     "gulp": "^4.0.2",
     "gulp-less": "^4.0.1",
     "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.0.0",
     "gulp-typescript": "^5.0.1",
     "gulp-uglify": "^3.0.2",
     "miniprogram-api-typings": "^2.9.4",

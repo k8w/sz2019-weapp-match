@@ -1,4 +1,5 @@
-<view>
+<view class="page1">
     <text>Page 1 {{date}}</text>
+    <image src="RES_ROOT/test.png" style="border: solid 1px red" />
     <button bindtap="go">Goto Page2</button>
 </view>

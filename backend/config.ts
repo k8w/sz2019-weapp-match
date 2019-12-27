@@ -1,13 +1,13 @@
 import * as path from "path";
-import { FileServerOptions } from '../models/FileServer';
+import { FileServerOptions } from './src/models/FileServer';
 
 export const BackConfig = {
-    port: 3000,
+    port: 8081,
 
     /** 静态文件服务配置 */
     fileServer: {
         /** 静态文件根目录 */
-        dir: path.resolve(__dirname, '../../static/'),
+        dir: path.resolve(__dirname, './static/'),
         /** 静态文件URL前缀 */
         urlPrefix: '/static/',
         /** 前台缓存时间（秒） */
@@ -18,6 +18,6 @@ export const BackConfig = {
     uploadDir: 'uploads',    
 
     /** LocalDB的数据文件存放目录 */
-    localDbDir: path.resolve(__dirname, '../../db'),
+    localDbDir: path.resolve(__dirname, './db'),
 
 }

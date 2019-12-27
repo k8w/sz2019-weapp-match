@@ -1,5 +1,4 @@
-import { TsrpcClient } from 'tsrpc-miniapp';
-import { serviceProto } from '../../protocols/proto';
+import { Global } from '../../models/Global';
 
 Page({
     onLoad() {
@@ -9,11 +8,6 @@ Page({
     },
 
     async go() {
-        // wx.navigateTo({ url: '/pages/page2/index'})
-        let client = new TsrpcClient({
-            server: 'http://localhost:3000',
-            proto: serviceProto
-        })
-        console.log('Res', await client.callApi('Test', { name: 'Jack' }))
+        console.log('Res', await Global.apiClient.callApi('Test', { name: 'Jack' }))
     }
 })

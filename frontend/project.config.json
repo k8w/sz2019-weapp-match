@@ -5,7 +5,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
@@ -27,8 +27,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.4",
-	"appid": "wx45dfe3f30c0c8d0a",
-	"projectname": "TestWxAppJS",
+	"appid": "wx98e454a8d51d0356",
+	"projectname": "2019南山小程序大赛",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

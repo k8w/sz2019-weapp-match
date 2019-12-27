@@ -4,6 +4,12 @@ const less = require('gulp-less');
 const rename = require('gulp-rename');
 const del = require('del');
 const uglify = require('gulp-uglify');
+const replace = require('gulp-replace');
+
+/** 构建配置 */
+// LESS中引用图片的URL前缀（不带末尾的`/`）
+let RES_ROOT = 'https://k8w.io:8080/static/app';
+/** 构建配置 END */
 
 const paths = {
     ts: [
@@ -15,8 +21,7 @@ const paths = {
     ],
     static: [
         'src/**/*.json',
-        'src/**/*.wxml',
-        'src/**/*.png',
+        'src/**/*.wxml'
     ],
     npm: [
         'miniprogram_npm/**/*.js'
@@ -33,17 +38,21 @@ function buildTs() {
     if (isProd) {
         pipe = pipe.pipe(uglify());
     }
-    return pipe.pipe(gulp.dest('dist'));        
+    return pipe.pipe(gulp.dest('dist'));
 }
 
 function buildLess() {
-    return gulp.src(paths.less).pipe(less())
-        .pipe(rename({ extname: '.wxss' }))
+    return gulp.src(paths.less)
+        .pipe(replace(/RES_ROOT/g, RES_ROOT))
+        .pipe(less())
+        .pipe(rename({ extname: '.wxss' }))        
         .pipe(gulp.dest('dist'));
 }
 
 function copyStatic() {
-    return gulp.src(paths.static).pipe(gulp.dest('dist'));
+    return gulp.src(paths.static)
+        .pipe(replace(/RES_ROOT/g, RES_ROOT))
+        .pipe(gulp.dest('dist'));
 }
 
 function copyNpm() {
@@ -51,7 +60,9 @@ function copyNpm() {
 }
 
 function cleanJS() {
-    return del('dist/**/*.js');
+    return del('dist/**/*.js', {
+        ignore: paths.npm.map(v => 'dist/' + v)
+    });
 }
 
 function cleanWxss() {
