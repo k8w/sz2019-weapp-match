@@ -1,0 +1,41 @@
+<view class="PageEdit">
+    <view wx:if="{{card}}" class="form">
+        <view class="row">
+            <view class="left">头像</view>
+            <view class="right">
+                <image class="{{card.avatar ? 'avatar' : 'avatar empty'}}" src="{{card.avatar ? ('RES_ROOT/'+card.avatar) : ''}}" mode="aspectFill" bindtap="onImageTap" />
+            </view>
+        </view>
+        <view class="row">
+            <view class="left">姓名</view>
+            <view class="right">
+                <input placeholder="如：赵温华（必填）" value="{{card.name}}" bindblur="onInputBlur" data-name="name" />
+            </view>
+        </view>
+        <view class="row">
+            <view class="left">电话</view>
+            <view class="right">
+                <input placeholder="如：18682122535（必填）" value="{{card.tel}}" bindblur="onInputBlur" data-name="tel" />
+            </view>
+        </view>
+        <view class="row">
+            <view class="left">公司</view>
+            <view class="right">
+                <input placeholder="如：金匠时代（深圳）科技有限公司（必填）" value="{{card.company}}" bindblur="onInputBlur" data-name="company" />
+            </view>
+        </view>
+        <view class="row">
+            <view class="left">职位</view>
+            <view class="right">
+                <input placeholder="如：小程序开发（必填）" value="{{card.title}}" bindblur="onInputBlur" data-name="title" />
+            </view>
+        </view>
+        <button class="main-button save" bindtap="onBtnSave" disabled="{{isSaving}}">
+            {{isSaving ? '保存中' : '保存'}}
+        </button>
+        <button class="main-button del" bindtap="onBtnDel" disabled="{{isDeleting}}">
+            {{isSaving ? '删除中' : '删除'}}
+        </button>
+    </view>
+    <view wx:else class="loading">加载中</view>
+</view>

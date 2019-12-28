@@ -1,0 +1,116 @@
+.PageShow {
+    @colorBlue: #1F8AE8;
+    @topHeight: 0rpx;
+
+    >.top-bg{
+        @radius: 1000rpx;
+        position: absolute;
+        width: @radius * 2;
+        height: @radius * 2;
+        background: @colorBlue;
+        top: -@radius * 2 + @topHeight + 300;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 1000rpx;
+    }
+
+    >.main{
+        position: absolute;
+        background: white;
+        border-top-left-radius: 40rpx;
+        border-top-right-radius: 40rpx;
+        padding: 40rpx;
+        top: @topHeight;
+        left: 40rpx;
+        width: 750rpx - 40rpx * 2;
+        box-sizing: border-box;
+
+        >.card{
+            >.card-title{
+                display: flex;
+                margin-bottom: 40rpx;
+
+                >.left>.avatar{
+                    width: 110rpx;
+                    height: 110rpx;
+                    border-radius: 4rpx;
+                }
+
+                >.right{
+                    padding-left: 40rpx;
+                    color: #333333;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    >.name{
+                        font-size: 40rpx;
+                    }
+                    >.title{
+                        font-size: 20rpx;
+                    }
+                }
+            }
+
+            >.info{
+                color: #8AA2BC;
+                font-size: 26rpx;
+                line-height: 40rpx;
+                height: 40rpx;
+                vertical-align: middle;
+                margin-bottom: 40rpx;
+
+                >.icon{
+                    width: 40rpx;
+                    height: 40rpx;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    display: inline-block;
+                    margin-right: 20rpx;
+                }
+
+                >.icon.tel{
+                    background-image: url('RES_ROOT/app/icon_tel.png');
+                    background-size: 30rpx 32rpx;
+                }
+
+                >.icon.company{
+                    background-image: url('RES_ROOT/app/icon_company.png');
+                    background-size: 31rpx 32rpx;
+                }
+            }
+        }
+
+        >.action{
+            margin-top: 100rpx;
+            >.btn-edit{
+                background: url('RES_ROOT/app/edit.png') no-repeat center center;
+                width: 80rpx;
+                height: 80rpx;
+                background-size: 47rpx 47rpx;
+                transform: scale(1);
+                transition: transform 150ms;
+
+                &:active{
+                    transform: scale(1.1);
+                }
+            }
+            >.main-button{
+                display: block;
+                float: right;
+                width: 460rpx;
+            }
+        }
+    }
+
+    >.bottom{
+        position: fixed;
+        width: 100%;
+        height: 100rpx;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

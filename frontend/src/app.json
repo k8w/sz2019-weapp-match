@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/page1/index",
-    "pages/page2/index"
+    "pages/index/index",
+    "pages/show/show",
+    "pages/edit/edit"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "智能名片",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",

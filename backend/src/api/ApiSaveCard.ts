@@ -6,6 +6,11 @@ import uuid = require("uuid");
 export async function ApiSaveCard(call: ApiCall<ReqSaveCard, ResSaveCard>) {
     let userCards = await getOrCreateUserCards(call.req.openId);
 
+    if (!call.req.card.id) {
+        call.req.card.created = Date.now();
+    }
+    call.req.card.lastModified = Date.now();
+
     // Update
     if (call.req.card.id) {
         let cardIndex = userCards.cards.findIndex(v => v.id === call.req.card.id);

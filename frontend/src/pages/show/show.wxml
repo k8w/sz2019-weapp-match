@@ -1,0 +1,33 @@
+<view class="PageShow">
+    <view class="top-bg"></view>
+    
+    <view wx:if="{{card}}" class="main">
+        <view class="card">
+            <view class="card-title">
+                <view class="left">
+                    <image class="avatar" src="RES_ROOT/{{card.avatar}}" mode="aspectFill" />
+                </view>
+                <view class="right">
+                    <view class="name">{{card.name}}</view>
+                    <view class="title">{{card.title}}</view>
+                </view>
+            </view>
+            <view class="info">
+                <view class="icon tel" />
+                <text>{{card.tel}}</text>
+            </view>
+            <view class="info">
+                <view class="icon company" />
+                <text>{{card.company}}</text>
+            </view>
+        </view>
+        <view class="action">
+            <image class="btn-edit" bindtap="onBtnEdit" hidden="{{!canEdit}}" />
+            <button class="main-button" open-type="share">转发</button>
+        </view>
+    </view>
+
+    <view class="bottom">
+        <button class="main-button" bindtap="onBtnHome">我也要制作</button>
+    </view>
+</view>

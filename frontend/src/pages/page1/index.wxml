@@ -1,6 +1,0 @@
-<view class="page1">
-    <text>Page 1 {{date}}</text>
-    <button bindtap="testApi">Test API</button>
-    <button bindtap="upload">uploadImage</button>
-    <image src="RES_ROOT/{{imgSrc}}" style="border: solid 1px red" />
-</view>

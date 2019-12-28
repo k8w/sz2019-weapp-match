@@ -32,13 +32,8 @@ function clean() {
     return del('dist');
 }
 
-const isProd = process.argv.indexOf('build') > -1;
 function buildTs() {
-    let pipe = gulp.src(paths.ts).pipe(ts.createProject('tsconfig.json')());
-    // if (isProd) {
-    //     pipe = pipe.pipe(uglify());
-    // }
-    return pipe.pipe(gulp.dest('dist'));
+    return gulp.src(paths.ts).pipe(ts.createProject('tsconfig.json')()).pipe(gulp.dest('dist'));
 }
 
 function buildLess() {

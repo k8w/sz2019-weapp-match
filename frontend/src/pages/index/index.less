@@ -1,0 +1,62 @@
+.PageIndex {
+    @bottomHeight: 100rpx;
+
+    >.list{
+        margin: 40rpx 40rpx @bottomHeight 40rpx;
+
+        >.card{
+            margin-bottom: 20rpx;
+            height: 180rpx;
+            padding: 20rpx;
+            display: flex;
+            color: #666666;
+            transform: scale(1);
+            background-color: #fff;
+            transition: transform 150ms;
+            background: url('RES_ROOT/app/arrow.png') no-repeat center right;
+            background-size: 20rpx 46rpx;
+
+            >.left{
+                image{
+                    display: block;
+                    width: 180rpx;
+                    height: 180rpx;
+                }
+                padding-right: 40rpx;
+            }
+
+            >.right{
+                >.name{
+                    font-size: 40rpx;
+                    line-height: 40rpx;
+                    margin-bottom: 10rpx;
+                }
+                >.title{
+                    font-size: 26rpx;
+                    line-height: 30rpx;
+                    margin-bottom: 40rpx;
+                }
+                >.info{
+                    font-size: 22rpx;
+                    line-height: 30rpx;
+                }
+            }
+
+            &:active{
+                transform: scale(1.1);
+                background-color: #e2e2e2;
+            }
+        }
+    }
+
+    >.bottom{
+        position: fixed;
+        width: 100%;
+        height: @bottomHeight;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

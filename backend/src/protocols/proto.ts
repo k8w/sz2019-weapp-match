@@ -2,6 +2,7 @@ import { ServiceProto } from 'tsrpc-proto';
 import { ReqDelCard, ResDelCard } from './PtlDelCard'
 import { ReqGetCard, ResGetCard } from './PtlGetCard'
 import { ReqGetCardList, ResGetCardList } from './PtlGetCardList'
+import { ReqLogin, ResLogin } from './PtlLogin'
 import { ReqSaveCard, ResSaveCard } from './PtlSaveCard'
 import { ReqTest, ResTest } from './PtlTest'
 import { ReqUpload, ResUpload } from './PtlUpload'
@@ -11,6 +12,7 @@ export interface ServiceType {
         "DelCard": ReqDelCard,
         "GetCard": ReqGetCard,
         "GetCardList": ReqGetCardList,
+        "Login": ReqLogin,
         "SaveCard": ReqSaveCard,
         "Test": ReqTest,
         "Upload": ReqUpload
@@ -19,6 +21,7 @@ export interface ServiceType {
         "DelCard": ResDelCard,
         "GetCard": ResGetCard,
         "GetCardList": ResGetCardList,
+        "Login": ResLogin,
         "SaveCard": ResSaveCard,
         "Test": ResTest,
         "Upload": ResUpload
@@ -50,6 +53,13 @@ export const serviceProto: ServiceProto<ServiceType> = {
             "type": "api",
             "req": "PtlGetCardList/ReqGetCardList",
             "res": "PtlGetCardList/ResGetCardList"
+        },
+        {
+            "id": 6,
+            "name": "Login",
+            "type": "api",
+            "req": "PtlLogin/ReqLogin",
+            "res": "PtlLogin/ResLogin"
         },
         {
             "id": 5,
@@ -149,6 +159,13 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     }
                 },
                 {
+                    "id": 4,
+                    "name": "avatar",
+                    "type": {
+                        "type": "String"
+                    }
+                },
+                {
                     "id": 1,
                     "name": "name",
                     "type": {
@@ -156,8 +173,22 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     }
                 },
                 {
-                    "id": 2,
-                    "name": "desc",
+                    "id": 5,
+                    "name": "tel",
+                    "type": {
+                        "type": "String"
+                    }
+                },
+                {
+                    "id": 6,
+                    "name": "company",
+                    "type": {
+                        "type": "String"
+                    }
+                },
+                {
+                    "id": 7,
+                    "name": "title",
                     "type": {
                         "type": "String"
                     }
@@ -165,6 +196,14 @@ export const serviceProto: ServiceProto<ServiceType> = {
                 {
                     "id": 3,
                     "name": "lastModified",
+                    "type": {
+                        "type": "Number",
+                        "scalarType": "uint"
+                    }
+                },
+                {
+                    "id": 8,
+                    "name": "created",
                     "type": {
                         "type": "Number",
                         "scalarType": "uint"
@@ -193,24 +232,33 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     "type": {
                         "type": "Array",
                         "elementType": {
-                            "type": "Interface",
-                            "properties": [
-                                {
-                                    "id": 0,
-                                    "name": "id",
-                                    "type": {
-                                        "type": "String"
-                                    }
-                                },
-                                {
-                                    "id": 1,
-                                    "name": "name",
-                                    "type": {
-                                        "type": "String"
-                                    }
-                                }
-                            ]
+                            "type": "Reference",
+                            "target": "Card/Card"
                         }
+                    }
+                }
+            ]
+        },
+        "PtlLogin/ReqLogin": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "code",
+                    "type": {
+                        "type": "String"
+                    }
+                }
+            ]
+        },
+        "PtlLogin/ResLogin": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "openId",
+                    "type": {
+                        "type": "String"
                     }
                 }
             ]
