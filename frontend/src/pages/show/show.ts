@@ -55,8 +55,9 @@ Page<PageShowData, PageShowCustom>({
                 card: res.card
             })
         }
-        catch(e){
-            if ((e as TsrpcError).type === 'ApiError') {
+        catch (e) {
+            console.log(e)
+            if (e.info === 'CARD_NOT_EXIST') {
                 await WxUtil.alert((e as TsrpcError).message);
                 wx.reLaunch({ url: '/pages/index/index' });
             }

@@ -50,7 +50,7 @@ Page<PageEditData, PageEditCustom>({
             })
         }
         catch (e) {
-            if ((e as TsrpcError).type === 'ApiError') {
+            if (e.info === 'CARD_NOT_EXIST') {
                 await WxUtil.alert((e as TsrpcError).message);
                 wx.reLaunch({ url: '/pages/index/index' });
             }

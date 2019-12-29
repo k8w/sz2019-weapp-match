@@ -37,5 +37,5 @@
             {{isSaving ? '删除中' : '删除'}}
         </button>
     </view>
-    <view wx:else class="loading">加载中</view>
+    <view wx:else class="loading main-intro">加载中</view>
 </view>
