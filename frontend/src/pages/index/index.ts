@@ -4,7 +4,6 @@ import { WxUtil } from '../../models/WxUtil';
 
 export interface PageIndexData {
     list: ResGetCardList['list'];
-    isLoading: boolean;
 }
 
 export interface PageIndexCustom {
@@ -16,8 +15,7 @@ export interface PageIndexCustom {
 
 Page<PageIndexData, PageIndexCustom>({
     data: {
-        list: [],
-        isLoading: true
+        list: []
     },
 
     async onShow() {
@@ -26,15 +24,12 @@ Page<PageIndexData, PageIndexCustom>({
     },
 
     async reloadList() {
-        this.setData({ isLoading: true });
-
         try {
             var res = await Global.apiClient.callApi('GetCardList', {
                 openId: Global.openId!
             });
             this.setData({
-                list: res.list,
-                isLoading: false
+                list: res.list
             });            
         }
         catch{

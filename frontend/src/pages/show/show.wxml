@@ -5,7 +5,7 @@
         <view class="card">
             <view class="card-title">
                 <view class="left">
-                    <image class="avatar" src="RES_ROOT/{{card.avatar}}" mode="aspectFill" />
+                    <image class="avatar" src="RES_ROOT/{{card.avatar}}" mode="aspectFill" bindtap="onAvatarTap" />
                 </view>
                 <view class="right">
                     <view class="name">{{card.name}}</view>

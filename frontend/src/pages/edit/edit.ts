@@ -1,6 +1,8 @@
 import { Card } from '../../protocols/Card';
 import { Global } from '../../models/Global';
 import { WxUtil } from '../../models/WxUtil';
+import { TsrpcError } from 'tsrpc-proto';
+
 export interface PageEditData {
     isSaving: boolean,
     isDeleting: boolean,
@@ -47,12 +49,18 @@ Page<PageEditData, PageEditCustom>({
                 card: res.card
             })
         }
-        catch{
-            let op = await WxUtil.confirm('网络开小差了，稍后再试试吧~', '网络错误', {
-                cancelText: '返回',
-                confirmText: '重试'
-            });
-            op ? await this.loadCard() : wx.reLaunch({ url: '/pages/index/index' });
+        catch (e) {
+            if ((e as TsrpcError).type === 'ApiError') {
+                await WxUtil.alert((e as TsrpcError).message);
+                wx.reLaunch({ url: '/pages/index/index' });
+            }
+            else {
+                let op = await WxUtil.confirm('网络开小差了，稍后再试试吧~', '网络错误', {
+                    cancelText: '返回',
+                    confirmText: '重试'
+                });
+                op ? await this.loadCard() : wx.reLaunch({ url: '/pages/index/index' });
+            }            
         }
     },
 

@@ -1,6 +1,8 @@
 import { Card } from '../../protocols/Card';
 import { WxUtil } from '../../models/WxUtil';
 import { Global } from '../../models/Global';
+import { TsrpcError } from 'tsrpc-proto';
+import { FrontConfig } from '../../config';
 
 export interface PageShowData {
     canEdit: boolean,
@@ -13,6 +15,7 @@ export interface PageShowCustom {
     loadCard(): Promise<void>;
     onBtnEdit(): void;
     onBtnHome(): void;
+    onAvatarTap(): void;
 }
 
 Page<PageShowData, PageShowCustom>({
@@ -52,12 +55,18 @@ Page<PageShowData, PageShowCustom>({
                 card: res.card
             })
         }
-        catch{
-            let op = await WxUtil.confirm('网络开小差了，稍后再试试吧~', '网络错误', {
-                cancelText: '返回',
-                confirmText: '重试'
-            });
-            op ? await this.loadCard() : wx.reLaunch({ url: '/pages/index/index' });
+        catch(e){
+            if ((e as TsrpcError).type === 'ApiError') {
+                await WxUtil.alert((e as TsrpcError).message);
+                wx.reLaunch({ url: '/pages/index/index' });
+            }
+            else {
+                let op = await WxUtil.confirm('网络开小差了，稍后再试试吧~', '网络错误', {
+                    cancelText: '返回',
+                    confirmText: '重试'
+                });
+                op ? await this.loadCard() : wx.reLaunch({ url: '/pages/index/index' });
+            } 
         }
     },
 
@@ -87,6 +96,12 @@ Page<PageShowData, PageShowCustom>({
                 path: `/pages/index/index`
             }
         }
+    },
+
+    onAvatarTap() {
+        wx.previewImage({
+            urls: [FrontConfig.server + '/static/' + this.data.card!.avatar]
+        })
     }
 
 })

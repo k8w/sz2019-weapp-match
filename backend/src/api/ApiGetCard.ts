@@ -7,7 +7,7 @@ export async function ApiGetCard(call: ApiCall<ReqGetCard, ResGetCard>) {
 
     let card = userCards.cards.find(v => v.id === call.req.cardId);
     if (!card) {
-        call.error('不存在的Card');
+        call.error('此名片已被删除', 'CARD_NOT_EXIST');
         return;
     }
 

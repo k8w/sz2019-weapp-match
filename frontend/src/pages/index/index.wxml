@@ -1,5 +1,5 @@
 <view class="PageIndex">
-    <view wx:if="{{isLoading}}" class="loading">加载中...</view>
+    <view wx:if="{{!list.length}}" class="loading">加载中...</view>
     <view wx:elif="{{list.length > 0}}" class="list">
         <block wx:for="{{list}}">
             <view class="card" data-card-id="{{item.id}}" bindtap="onCardTap">
